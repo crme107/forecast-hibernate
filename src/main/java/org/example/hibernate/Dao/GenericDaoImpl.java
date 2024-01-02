@@ -41,8 +41,8 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     @Override
     public void save(T t) {
         Session session = SessionManager.getSession();
-
         session.beginTransaction();
+
         T entity = session.merge(t);
         session.persist(entity);
         session.flush();
@@ -53,8 +53,8 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     @Override
     public void update(T t) {
         Session session = SessionManager.getSession();
-
         session.beginTransaction();
+
         session.merge(t);
         session.flush();
 
